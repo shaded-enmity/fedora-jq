@@ -9,4 +9,23 @@ cd fedora-jq/
 docker build -t jqx .
 ```
 
+Integration
+-----------
 
+Edit your `~/.bashrc` and add the following:
+
+```
+jqx() {
+    docker run -i --entrypoint="/jq/jq" $@
+}
+```
+
+And use:
+
+```
+jqx . < path-to-json
+```
+or
+```
+echo '{"a": 1}' | jqx .a
+```
